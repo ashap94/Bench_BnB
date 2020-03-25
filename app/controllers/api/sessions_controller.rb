@@ -1,4 +1,4 @@
-class Api::SessionController < ApplicationController
+class Api::SessionsController < ApplicationController
 
     def create
         @user = User.find_by_credentials( 
@@ -9,7 +9,7 @@ class Api::SessionController < ApplicationController
             login!(@user)
             render 'api/users/show.json.jbuilder'
         else
-            render :json => @user.errors.full_messages, status: 401
+            render json: @user.errors.full_messages, status: 401
         end
     end
 
@@ -23,10 +23,5 @@ class Api::SessionController < ApplicationController
         end
     end
 
-    private
-
-    def user_params
-        params.require(:user).permit(:username, :password)
-    end
 
 end
