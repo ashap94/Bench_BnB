@@ -19,16 +19,19 @@ const receiveErrors = errors => ({
 });
 
 export const signup = userForm => dispatch =>
-  APISessionUtil.signup(userForm)
-    .then(userData => dispatch(receiveCurrentUser(userData)))
-    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
+  APISessionUtil.signup(userForm).then(
+    userData => dispatch(receiveCurrentUser(userData)),
+    err => dispatch(receiveErrors(err.responseJSON))
+  );
 
 export const login = userForm => dispatch =>
-  APISessionUtil.login(userForm)
-    .then(userData => dispatch(receiveCurrentUser(userData)))
-    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
+  APISessionUtil.login(userForm).then(
+    userData => dispatch(receiveCurrentUser(userData)),
+    err => dispatch(receiveErrors(err.responseJSON))
+  );
 
 export const logout = () => dispatch =>
-  APISessionUtil.logout()
-    .then(userData => dispatch(logoutCurrentUser()))
-    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
+  APISessionUtil.logout().then(
+    userData => dispatch(logoutCurrentUser()),
+    err => dispatch(receiveErrors(err.responseJSON))
+  );
