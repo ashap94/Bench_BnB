@@ -10,7 +10,7 @@ const Search = ({ benches, fetchBenches }) => {
 
   return (
     <div>
-      <BenchMap />
+      <BenchMap benches={benches} />
       <BenchIndex benches={benches} fetchBenches={fetchBenches} />
     </div>
   );
