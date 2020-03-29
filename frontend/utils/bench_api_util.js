@@ -15,3 +15,10 @@ export const fetchBenches = data => {
     data
   });
 };
+
+export const createBench = bench =>
+  $.ajax({
+    url: "/api/benches",
+    method: "POST",
+    data: { bench }
+  });
