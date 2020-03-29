@@ -26,7 +26,7 @@ class BenchMap extends React.Component {
           lng: west
         }
       };
-      this.props.updateBounds(bounds);
+      this.props.updateFilter("bounds", bounds);
     });
   }
 

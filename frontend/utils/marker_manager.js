@@ -6,14 +6,21 @@ export default class MarkerManager {
 
   updateMarkers(benches) {
     console.log("time to update");
-    if (benches.length !== 0) {
-      for (let i = 0; i < benches.length; i++) {
-        let bench = benches[i];
-        if (!this.markers[bench.id]) {
-          this.createMarkerFromBench(bench);
-        }
-      }
-    }
+    const benchesObj = {};
+    benches.forEach(bench => (benchesObj[bench.id] = bench));
+
+    benches
+      .filter(bench => !this.markers[bench.id])
+      .forEach(bench => this.createMarkerFromBench(bench));
+
+    Object.keys(this.markers)
+      .filter(benchId => !benchesObj[benchId])
+      .forEach(benchId => this.removeMarker(this.markers[benchId]));
+  }
+
+  removeMarker(marker) {
+    this.markers[marker.benchId].setMap(null);
+    delete this.markers[marker.benchId];
   }
 
   createMarkerFromBench(bench) {
@@ -21,7 +28,8 @@ export default class MarkerManager {
     let marker = new google.maps.Marker({
       position: latLng,
       map: this.map,
-      title: bench.description
+      title: bench.description,
+      benchId: bench.id
     });
     this.markers[bench.id] = marker;
   }
