@@ -6,7 +6,9 @@ import { updateFilter } from "../../actions/filter_actions";
 const mapStateToProps = state => {
   let benchesArray = Object.values(state.entities.benches);
   return {
-    benches: benchesArray
+    benches: benchesArray,
+    minSeating: state.ui.filters.minSeating,
+    maxSeating: state.ui.filters.maxSeating
   };
 };
 
