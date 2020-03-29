@@ -16,9 +16,22 @@ export const fetchBenches = data => {
   });
 };
 
+export const fetchBench = id =>
+  $.ajax({
+    url: `/api/benches/${id}`,
+    method: "GET"
+  });
+
 export const createBench = bench =>
   $.ajax({
     url: "/api/benches",
     method: "POST",
     data: { bench }
+  });
+
+export const createReview = review =>
+  $.ajax({
+    method: "POST",
+    url: "api/reviews",
+    data: { review }
   });

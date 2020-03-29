@@ -5,6 +5,7 @@ import SignupFormContainer from "../components/session/signup_form_container";
 // import BenchIndexContainer from "../components/benches/benches_index_container";
 import SearchContainer from "../components/search/search_container";
 import BenchFormContainer from "../components/bench_form/bench_form_container";
+import BenchShowContiner from "../components/bench_show/bench_show_container";
 import { Route, Switch, Link } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../utils/route_util";
 
@@ -24,6 +25,7 @@ const App = () => (
         path="/benches/new"
         component={BenchFormContainer}
       />
+      <Route exact path="/benches/:benchId" component={BenchShowContiner} />
       <Route exact path="/" component={SearchContainer} />
     </Switch>
   </div>

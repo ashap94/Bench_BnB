@@ -47,3 +47,6 @@ u3 = User.create!(
   username: 'joseph',
   password: '123456'
 )
+
+Review.create(author_id: u1.id, bench_id:  b1.id, body: "very good sits", rating: 5)
+Review.create(author_id: u2.id, bench_id:  b2.id, body: "its okay sit", rating: 3)
