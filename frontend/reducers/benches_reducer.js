@@ -5,7 +5,7 @@ export default (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_BENCHES:
-      return Object.assign({}, state, action.benches);
+      return action.benches;
 
     case RECEIVE_BENCH:
       return Object.assign({}, state, { [action.bench.id]: action.bench });

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import BenchIndex from "../benches/benches_index";
 import BenchMap from "../bench_map/bench_map";
+import FilterForm from "./filter_form";
 
 const Search = ({ benches, fetchBenches, updateFilter }) => {
   //   const mapRef = useRef(null); // use this mapRef

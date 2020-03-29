@@ -6,6 +6,7 @@ const BenchIndexItem = props => {
       <p>{props.bench.description}</p>
       <p>Latitude: {props.bench.lat}</p>
       <p>Longitude: {props.bench.lng}</p>
+      <p>Seating: {props.bench.seating}</p>
     </li>
   );
 };
