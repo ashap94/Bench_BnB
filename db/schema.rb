@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_03_27_011035) do
     t.string "description"
     t.float "lat"
     t.float "lng"
+    t.integer "seating", null: false
+    t.string "picture_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
