@@ -17,6 +17,12 @@ const Review = ({ review, author }) => {
 
 const mapStateToProps = ({ entities: { users } }, { review }) => {
   console.log("WHAT ARE USERS HERE IN REVIEW LIST CONTAINER:   ", users);
+  console.log("WHAT IS REVIEW HERE IN REVIEW LIST CONTAINER:   ", review);
+  //   console.log(
+  //     "WHAT IS AUTHOR HERE IN REVIEW LIST CONTAINER:   ",
+  //     users[review.author_id]
+  //   );
+
   return {
     author: users[review.author_id]
   };

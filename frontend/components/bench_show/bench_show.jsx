@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import BenchMap from "../bench_map/bench_map";
 import BenchDetail from "./bench_detail";
 import ReviewFormContainer from "./review_form_container";
@@ -7,8 +8,6 @@ import { ProtectedRoute } from "../../utils/route_util";
 import { ReviewLink } from "../../utils/link_util";
 
 const BenchShow = ({ bench, benchId, fetchBench, reviews }) => {
-  const [loaded, setLoaded] = useState(false);
-
   const benches = {
     [benchId]: bench
   };
@@ -33,17 +32,18 @@ const BenchShow = ({ bench, benchId, fetchBench, reviews }) => {
           fetchBench={fetchBench}
         />
       </div>
-      <div className="right-half bench-details">{benchDetail}</div>
-      {/* IF ISSUE, COMMENT OUT BELOW */}
-      <ReviewLink
-        component={ReviewFormContainer}
-        to={`/benches/${benchId}/review`}
-        label="Leave a Review"
-      />
-      <ProtectedRoute
-        path="/benches/:benchId/review"
-        component={ReviewFormContainer}
-      />
+      <div className="right-half bench-details">
+        {benchDetail}
+        <ReviewLink
+          component={ReviewFormContainer}
+          to={`/benches/${benchId}/review`}
+          label="Leave a Review"
+        />
+        <ProtectedRoute
+          path="/benches/:benchId/review"
+          component={ReviewFormContainer}
+        />
+      </div>
     </div>
   );
 };

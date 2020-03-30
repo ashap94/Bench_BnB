@@ -25,7 +25,7 @@ const App = () => (
         path="/benches/new"
         component={BenchFormContainer}
       />
-      <Route exact path="/benches/:benchId" component={BenchShowContiner} />
+      <Route path="/benches/:benchId" component={BenchShowContiner} />
       <Route exact path="/" component={SearchContainer} />
     </Switch>
   </div>

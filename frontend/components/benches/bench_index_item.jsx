@@ -1,14 +1,35 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-const BenchIndexItem = props => {
-  return (
-    <li>
-      <p>{props.bench.description}</p>
-      <p>Latitude: {props.bench.lat}</p>
-      <p>Longitude: {props.bench.lng}</p>
-      <p>Seating: {props.bench.seating}</p>
-    </li>
-  );
-};
+class BenchIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-export default BenchIndexItem;
+  handleClick() {
+    const benchId = this.props.bench.id;
+    // console.log("WHAT DOES BENCH LOOK LIKE:   ", this.props.bench);
+    this.props.history.push(`/benches/${benchId}`);
+  }
+
+  render() {
+    const { average_rating, description, picture_url } = this.props.bench;
+
+    return (
+      <div className="bench-index-item" onClick={this.handleClick}>
+        <div className="index-item-info">
+          <span className="index-item-category">Rating:</span>
+          <span className="index-item-copy">
+            {average_rating || "No reviews yet"}
+          </span>
+          <span className="index-item-category">Description:</span>
+          <span className="index-item-copy">{description}</span>
+        </div>
+        <img src={picture_url} />
+      </div>
+    );
+  }
+}
+
+export default withRouter(BenchIndexItem);

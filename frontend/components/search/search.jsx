@@ -16,14 +16,19 @@ const Search = ({
   // map elsewhere while this component is alive
 
   return (
-    <div>
-      <FilterForm
-        minSeating={minSeating}
-        maxSeating={maxSeating}
-        updateFilter={updateFilter}
-      />
-      <BenchMap benches={benches} updateFilter={updateFilter} />
-      <BenchIndex benches={benches} fetchBenches={fetchBenches} />
+    <div className="user-pane">
+      <div className="left-half">
+        <BenchMap benches={benches} updateFilter={updateFilter} />
+      </div>
+
+      <div className="right-half">
+        <FilterForm
+          minSeating={minSeating}
+          maxSeating={maxSeating}
+          updateFilter={updateFilter}
+        />
+        <BenchIndex benches={benches} fetchBenches={fetchBenches} />
+      </div>
     </div>
   );
 };
