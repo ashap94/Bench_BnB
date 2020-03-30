@@ -8,6 +8,7 @@
 
 User.delete_all
 Bench.delete_all
+Review.destroy_all
 
 b1 = Bench.create!(
   description: 'alamo square, many dogs',
